@@ -83,7 +83,7 @@
 						<tr>
 							<th><label>出院诊断：</label></th>
 							<td>
-								<input type="text" name="patient.dischargeDiagnosis" data-bind="value: dischargeDiagnosis"  style="width: 170px;"  validate="rangelength:[0,20]"/>
+								<input type="text" name="patient.dischargeDiagnosis" data-bind="value: dischargeDiagnosis"  style="width: 170px;"  validate="rangelength:[0,1024]"/>
 							</td>
 							<th><label>病理诊断：</label></th>
 							<td>
@@ -93,13 +93,13 @@
 						<tr>
 							<th><label>化验检查结果：</label></th>
 							<td colspan="3">
-								<textarea name="patient.treatment" rows="3" cols="50" data-bind="value: treatment" validate="rangelength:[0,1024]" style="width: 477px;"></textarea>
+								<textarea name="patient.treatment" rows="3" cols="50" data-bind="value: treatment" validate="rangelength:[0,2048]" style="width: 477px;"></textarea>
 							</td>
 						</tr>
 						<tr>
 							<th><label>出院医嘱：</label></th>
 							<td colspan="3">
-								<textarea name="patient.dischargeAdvice" rows="4" cols="50" data-bind="value: dischargeAdvice" validate="rangelength:[0,1024]" style="width: 477px;"></textarea>
+								<textarea name="patient.dischargeAdvice" rows="4" cols="50" data-bind="value: dischargeAdvice" validate="rangelength:[0,2048]" style="width: 477px;"></textarea>
 							</td>
 						</tr>
 						<tr>

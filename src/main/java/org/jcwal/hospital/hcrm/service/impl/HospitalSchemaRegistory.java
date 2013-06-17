@@ -341,13 +341,13 @@ public class HospitalSchemaRegistory {
 		FinderAction action = new FinderAction();
 		action.setLabel("新增病人");
 		action.setHref("admin/hcrm/patient/create");
-		action.setTarget("dialog::{title: '新增病人', width:'650',height:'720'}");
+		action.setTarget("dialog::{title: '新增病人', width:'650',height:'600'}");
 		schema.addAction(action);
 
 		action = new FinderAction();
 		action.setLabel("编辑病人");
 		action.setHref("admin/hcrm/patient/edit");
-		action.setTarget("dialog::{title: '编辑病人', width:'650',height:'720'}");
+		action.setTarget("dialog::{title: '编辑病人', width:'650',height:'600'}");
 		action.setMaxRowSelected(1);
 		action.setMinRowSelected(1);
 		schema.addAction(action);
