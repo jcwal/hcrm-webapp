@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2010-2012 the original author or authors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="cacheManager" class="org.springframework.cache.support.CompositeCacheManager">
+		<property name="cacheManagers">
+			<list>
+				<!-- Instance Cache && Application Cache -->
+				<bean class="org.springframework.cache.ehcache.EhCacheCacheManager">
+					<property name="cacheManager">
+						<bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+					</property>
+				</bean>
+				<bean class="org.springframework.cache.support.SimpleCacheManager">
+					<property name="caches">
+						<set>
+							<!-- Session Cache -->
+							<bean class="org.macula.core.cache.session.SessionCacheFactoryBean">
+								<property name="name" value="sessionCache" />
+							</bean>
+						</set>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 过滤器 -->
+	<bean id="characterEncodingFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
+		<property name="encoding" value="UTF-8" />
+		<property name="forceEncoding" value="true" />
+	</bean>
+	
+	<!-- Common Web Beans -->
+	<!-- 配置多请求数据类型，如json xml -->
+	<util:list id="messageConverters">
+		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.ResourceHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+
+		<!-- 解析json请求数据，将json转换为java对象 -->
+		<bean class="org.macula.core.mvc.json.MappingJackson2HttpMessageConverter" />
+
+		<!-- 解析xml请求数据，将xml转换为java对象 -->
+		<bean class="org.macula.core.mvc.xml.MappingJackson2XmlHttpMessageConverter" />
+	</util:list>
+
+	<!-- FreeMarker配置 -->
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<!-- preferFileSystemAccess can make hot file detection, use true for development -->
+		<property name="preferFileSystemAccess" value="false" />
+		<property name="templateLoaderPaths">
+			<list>
+				<value>classpath:views/</value>
+			</list>
+		</property>
+		<property name="freemarkerSettings">
+			<util:properties location="classpath:freemarker.properties">
+				<prop key="datetime_format">#{T(org.macula.Configuration).getPatternDateTime()}</prop>
+				<prop key="date_format">#{T(org.macula.Configuration).getPatternDate()}</prop>
+				<prop key="time_format">#{T(org.macula.Configuration).getPatternTime()}</prop>
+				<prop key="number_format">#{T(org.macula.Configuration).getPatternNumber()}</prop>
+			</util:properties>
+		</property>
+	</bean>
+
+	<task:annotation-driven executor="taskExecutor" scheduler="taskScheduler" />
+	<task:executor id="taskExecutor" pool-size="20" />
+	<task:scheduler id="taskScheduler" pool-size="20" />
+
+</beans>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath*:/META-INF/spring/macula-*-app.xml" />
+	<import resource="classpath*:/META-INF/spring/jcwal-*-app.xml" />
+	
+	<!-- 地址安全拦截 -->
+	<bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy" primary="true">
+		<constructor-arg>
+			<list>
+				<bean class="org.springframework.security.web.DefaultSecurityFilterChain">
+					<constructor-arg index="0">
+						<bean class="org.springframework.security.web.util.AntPathRequestMatcher">
+							<constructor-arg index="0" value="/**" />
+						</bean>
+					</constructor-arg>
+					<constructor-arg index="1">
+						<list>
+							<ref bean="maculaExceptionNegotiateFilter" />
+							<ref bean="maculaConcurrentSessionFilter" />
+							<ref bean="maculaAccessLogFilter" />
+							<ref bean="maculaSecurityContextPersistenceFilter" />
+							<ref bean="maculaCasLogoutFilter" />
+							<ref bean="maculaLogoutFilter" />
+							<ref bean="maculaFormAuthenticationFilter" />
+							<ref bean="maculaCasAuthenticationFilter" />
+							<ref bean="maculaOpenApiAuthenticationFilter" />
+							<ref bean="maculaSecurityContextHolderAwareFilter" />
+							<ref bean="maculaRemembermeAuthenticationFilter" />
+							<ref bean="maculaRequestCacheAwareFilter" />
+							<ref bean="maculaAnonymousAuthenticationFilter" />
+							<ref bean="maculaSessionManagementFilter" />
+							<ref bean="maculaExceptionTranslationFilter" />
+							<ref bean="maculaSecurityFilter" />
+							<ref bean="maculaApplicationInstanceAgentFilter" />
+						</list>
+					</constructor-arg>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="abstractEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		abstract="true">
+		<property name="jpaVendorAdapter">
+			<bean class="org.macula.core.hibernate.HibernateJpaVendorAdapter">
+				<property name="database" value="HSQL" />
+				<property name="showSql" value="#{T(org.macula.Configuration).getShowSql()}" />
+				<property name="generateDdl" value="#{T(org.macula.Configuration).getGenerateDdl()}" />
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.ejb.event.post-update">
+					org.macula.core.hibernate.audit.AuditedEventListener
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Macula Entity Manager -->
+	<bean id="entityManagerFactory" parent="abstractEntityManagerFactory">
+		<property name="persistenceUnitManager">
+			<bean class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+				<property name="defaultPersistenceUnitName">
+					<value>macula</value>
+				</property>
+				<property name="defaultDataSource" ref="dataSource" />
+				<property name="packagesToScan">
+					<array>
+						<value>org.macula.base.app.domain</value>
+						<value>org.macula.base.security.domain</value>
+						<value>org.macula.base.data.domain</value>
+						<value>org.jcwal.hospital.hcrm.domain</value>
+					</array>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+		<!-- 根据各个模块下的db/module/changelog.xml文件自动更新数据库 -->
+	<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase" depends-on="entityManagerFactory">
+		<property name="dataSource" ref="dataSource" />
+		<property name="changeLog" value="classpath:db/changelog-macula.xml" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="#{T(org.macula.Configuration).getEntityManagerFactoryName()}" />
+	</bean>
+
+	<alias name="transactionManager" alias="transactionManager_macula" />
+	<alias name="entityManagerFactory" alias="entityManagerFactory_macula" />
+
+	<!-- @Transaction -->
+	<tx:advice id="maculaTxAdvise" transaction-manager="transactionManager" />
+	<aop:config>
+		<aop:pointcut id="maculaPointcut"
+			expression="execution(* org.macula..*.*(..)) and !execution(* org.jcwal.hospital..*.*(..)) and @within(org.springframework.stereotype.Service)" />
+		<aop:pointcut id="maculaHospitalPointcut"
+			expression="execution(* org.jcwal.hospital..*.*(..)) and @within(org.springframework.stereotype.Service)" />
+		<aop:advisor advice-ref="maculaTxAdvise" pointcut-ref="maculaPointcut" />
+	</aop:config>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg index="0" ref="dataSource" />
+	</bean>
+ 	
+	<!-- i18n resources -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- Macula Messages -->
+				<value>classpath:i18n/macula-core/validation</value>
+				<value>classpath:i18n/macula-core/messages</value>
+				<value>classpath:i18n/macula-base/messages</value>
+				<value>classpath:i18n/macula-mda/messages</value>
+				<value>classpath:i18n/macula-admin/messages</value>
+
+				<!-- hcrm webapp Messages -->
+				<value>classpath:i18n/jcwal-hcrm-webapp/messages</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="fallbackToSystemLocale" value="false" />
+	</bean>
+</beans>

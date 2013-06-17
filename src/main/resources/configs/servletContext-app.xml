@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd	
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<import resource="classpath*:/META-INF/spring/macula-*-servlet.xml" />
+	<import resource="classpath*:/META-INF/spring/jcwal-*-servlet.xml" />
+
+	<!-- Forwards requests to the "/" resource to the "welcome" view -->
+	<mvc:view-controller path="/" view-name="redirect:/admin" />
+	<mvc:view-controller path="/admin" view-name="admin/jcwal-hcrm-webapp/main" />
+	<mvc:view-controller path="/admin/ajaxforward" view-name="admin/jcwal-hcrm-webapp/ajaxforward" />
+	<mvc:view-controller path="/front/ajaxforward" view-name="admin/jcwal-hcrm-webapp/ajaxforward" />
+	<mvc:view-controller path="/admin/close" view-name="admin/jcwal-hcrm-webapp/close" />
+	<mvc:view-controller path="/front/close" view-name="front/jcwal-hcrm-webapp/close" />
+
+	<!-- Configures Handler Interceptors -->
+	<mvc:interceptors>
+		<!-- EntityManagerFactory In View For Macula -->
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/jcwal-hcrm-*/**" />
+			<mvc:mapping path="/admin/macula-admin/**" />
+			<mvc:mapping path="/front/macula-admin/**" />
+			<mvc:mapping path="/admin/macula-base/**" />
+			<mvc:mapping path="/front/macula-base/**" />
+			<mvc:mapping path="/admin/macula-mda/**" />
+			<mvc:mapping path="/front/macula-mda/**" />
+			<mvc:mapping path="/admin/macula-report/**" />
+			<mvc:mapping path="/front/macula-report/**" />
+			<bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+				<property name="entityManagerFactory" ref="#{T(org.macula.Configuration).getEntityManagerFactoryName()}" />
+			</bean>
+		</mvc:interceptor>
+
+		<!-- Changes the locale when a 'locale' request parameter is sent; e.g. /?locale=de -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+
+		<!-- Changes the theme whne a 'theme' request parameter is sent; e.g. /?theme=gray -->
+		<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />
+	</mvc:interceptors>
+</beans>

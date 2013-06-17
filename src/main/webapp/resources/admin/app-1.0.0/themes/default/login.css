@@ -1,0 +1,245 @@
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font-family: "����";
+	font-size: 12px;
+	color: #666666;
+	line-height: 24px;
+}
+
+.clear {
+	clear: both;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-size: 0;
+	line-height: normal;
+}
+
+.spacer {
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+}
+
+#logo {
+	float: left;
+	height: 95px;
+	width: 128px;
+}
+
+#topimg {
+	height: 95px;
+	width: 321px;
+	float: right;
+}
+
+#top {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#login {
+	border: 2px solid #d30000;
+	width: 770px;
+	margin-top: 25px;
+	padding: 0px;
+	height: 320px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0px;
+	/**
+	background-attachment: fixed;
+	background-image: url(images/img01.gif);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	*/
+}
+
+#loginleft {
+	border: 2px solid #f2f2f2;
+	float: left;
+	width: 310px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	padding: 5px;
+}
+
+#ajaxLoginleft {
+	border: 2px solid #f2f2f2;
+	float: left;
+	width: 310px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 30px;
+	padding: 5px;
+}
+
+#fooder {
+	width: 100%;
+	margin-top: 15px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #dedede;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.titlebj {
+	background-color: #d30000;
+	height: 23px;
+	width: 758px;
+	font-family: "����";
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	margin: 0px;
+	padding-top: 8px;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	padding-left: 8px;
+}
+
+#menu {
+	background-image: url(images/menubj.gif);
+	background-repeat: repeat-x;
+	height: 42px;
+	width: 100%;
+}
+
+#loginright {
+	float: right;
+	width: 37%;
+	background-position: right;
+	margin-top: 50px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	height: 50px;
+}
+
+#midimg {
+	float: left;
+	width: 13%;
+	height: 100%;
+	margin-top: 15px;
+	margin-right: 5px;
+	margin-left: 15px;
+	background: url(images/login04.gif) no-repeat;
+}
+
+#dl_div1,#dl_div2 {
+	border: 1px solid #e5e5e5;
+	width: 306px;
+	height: 125px;
+}
+
+.btnlogin {
+	background-image: url(images/btn01.gif);
+	background-repeat: no-repeat;
+	height: 30px;
+	width: 91px;
+	border: 0px solid #DC0000;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	word-spacing: 10px;
+}
+
+.logininput {
+	height: 18px;
+	width: 130px;
+}
+
+.dl_show {
+	display: block;
+}
+
+.btnimg1 {
+	background-image: url(images/login02.gif);
+	background-repeat: repeat-x;
+	width: 153px;
+	height: 33px;
+	color: #FFFFFF;
+	font-size: 14px;
+	border: 0px solid #DF0000;
+}
+
+.btnimg2 {
+	background-image: url(images/login03.gif);
+	background-repeat: repeat-x;
+	height: 33px;
+	width: 153px;
+	font-size: 14px;
+	color: #666666;
+	border: 0px solid #F3F4F6;
+}
+
+.dl_hide {
+	display: none;
+}
+/*------------------------------------------------nav--------------------*/
+#foodermenu {
+	height: 35px;
+	padding: 0;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	text-align: center;
+	width: 500px;
+}
+
+#copyright {
+	text-align: center;
+}
+
+#foodermenu ul {
+	height: 24px;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#foodermenu ul li {
+	float: left;
+	height: 16px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #FF0000;
+}
+
+#foodermenu ul li a {
+	display: block;
+	padding: 0 17px;
+	color: #FF3300;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#foodermenu ul li a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+#login input.loginerror {
+	background-color: #FBE3E4;
+	border-color: red;
+}
+
+#login label.loginerror {
+	color: red;
+	padding-left: 0.5em;
+}
+
+#login input.loginvalid {
+	
+}

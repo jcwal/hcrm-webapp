@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jcwal.hospital</groupId>
+	<artifactId>hcrm-webapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdkLevel>1.6</jdkLevel>
+		<jvmargs>-XX:MaxPermSize=384m -Xms512m -Xmx1024m</jvmargs>
+		<macula.version>2.1.0-SNAPSHOT</macula.version>
+		<macula.plugins.version>2.1.0-SNAPSHOT</macula.plugins.version>
+		<spring.version>3.2.0.RELEASE</spring.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.macula.plugins</groupId>
+			<artifactId>macula-plugins-admin</artifactId>
+			<version>${macula.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.macula.plugins</groupId>
+			<artifactId>macula-plugins-webapp</artifactId>
+			<type>war</type>
+			<version>${macula.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.macula.plugins</groupId>
+			<artifactId>macula-plugins-monitor</artifactId>
+			<version>${macula.version}</version>
+		</dependency>
+		<!-- liquibase -->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.2.8</version>
+		</dependency>
+	</dependencies>
+
+
+</project>

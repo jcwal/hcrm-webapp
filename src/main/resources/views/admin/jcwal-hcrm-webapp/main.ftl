@@ -1,0 +1,1 @@
+<@layout.admin title="荆州市第三人民医院病人回访系统" scripts="admin/jcwal-hcrm-webapp/main.js" />
