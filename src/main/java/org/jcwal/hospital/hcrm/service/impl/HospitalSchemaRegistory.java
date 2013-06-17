@@ -257,6 +257,22 @@ public class HospitalSchemaRegistory {
 		schema.addParam(param);
 
 		column = new FinderColumn();
+		column.setLabel("科室");
+		column.setColumn("DEPARTMENT");
+		column.setName("DEPARTMENT");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
 		column.setLabel("病种");
 		column.setColumn("DISEASE");
 		column.setName("DISEASE");
@@ -395,6 +411,22 @@ public class HospitalSchemaRegistory {
 		column.setLabel("病人姓名");
 		column.setColumn("PATIENT_NAME");
 		column.setName("PATIENT_NAME");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(100);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("病人科室");
+		column.setColumn("PATIENT_DEPARTMENT");
+		column.setName("PATIENT_DEPARTMENT");
 		column.setType(DataType.String);
 		column.setVisible(true);
 		column.setWidth(100);
