@@ -2178,7 +2178,7 @@ INSERT INTO MA_BASE_DATA_PARAM
 	, CREATED_TIME, LAST_UPDATED_BY, LAST_UPDATED_TIME)
 VALUES
 (34542, NULL, 'HCRM', 'hcrm_doctor_list', '医生列表'
-	, 'select id, nickname from DOCTOR', 'NONE', 'String', NULL, 0
+	, 'select id, nickname from DOCTOR', 'NONE', 'String', 1, 0
 	, 0, 1, 34541, NULL, '*SYSADM'
 	, NOW(), '*SYSADM', NOW());
 	
