@@ -26,15 +26,6 @@ import org.macula.core.domain.AbstractAuditable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * <p>
- * <b>Patient</b> 是病人.
- * </p>
- * 
- * @since 2013-5-13
- * @author Wilson Luo
- * @version $Id$
- */
 @Entity
 @DynamicInsert
 @DynamicUpdate

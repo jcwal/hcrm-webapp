@@ -22,15 +22,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.macula.core.domain.AbstractAuditable;
 
-/**
- * <p>
- * <b>Doctor</b> 是医生.
- * </p>
- * 
- * @since 2013-5-13
- * @author Wilson Luo
- * @version $Id$
- */
 @Entity
 @DynamicInsert
 @DynamicUpdate

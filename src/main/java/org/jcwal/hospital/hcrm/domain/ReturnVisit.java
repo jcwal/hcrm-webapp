@@ -24,15 +24,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.macula.core.domain.AbstractAuditable;
 
-/**
- * <p>
- * <b>ReturnVisit</b> 是回访
- * </p>
- * 
- * @since 2013-5-13
- * @author Wilson Luo
- * @version $Id$
- */
 @Entity
 @DynamicInsert
 @DynamicUpdate

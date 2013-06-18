@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="${resourceHost!""}/resources${appVersion!""}admin//app-${AppuiVersion}/themes/${getTheme('skin')}/images/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="${resourceHost!""}/resources${appVersion!""}/admin/app-${AppuiVersion}/themes/${getTheme('skin')}/images/favicon.ico" type="image/x-icon" />
 	    <link rel="icon" href="${resourceHost!""}/resources${appVersion!""}/admin/app-${AppuiVersion}/themes/${getTheme('skin')}/images/favicon.gif" type="image/gif" />
 		<link rel="stylesheet" href="${resourceHost!""}/resources${appVersion!""}/admin/app-${AppuiVersion}/themes/${getTheme('skin')}/login/regist${minVersion!""}.css" />
 		<link rel="stylesheet" href="${resourceHost!""}/resources${appVersion!""}/admin/app-${AppuiVersion}/themes/${getTheme('skin')}/login/regist.entry${minVersion!""}.css" />	

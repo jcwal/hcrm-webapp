@@ -18,13 +18,6 @@ package org.jcwal.hospital.hcrm.repository;
 import org.jcwal.hospital.hcrm.domain.Doctor;
 import org.macula.core.repository.MaculaJpaRepository;
 
-/**
- * <p> <b>DoctorRepository</b> is </p>
- * 
- * @since 2013-5-13
- * @author Wilson Luo
- * @version $Id$
- */
 public interface DoctorRepository extends MaculaJpaRepository<Doctor, Long> {
 
 	Doctor findByUsername(String userName);
