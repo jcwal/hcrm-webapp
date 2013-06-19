@@ -30,6 +30,9 @@ public class PatientReturnVisitScheduler {
 		for (Patient patient : patients) {
 			Date visitTime = patient.getNextVisitTime();
 			if (visitTime == null) {
+				visitTime = patient.getDischargeTime();
+			}
+			if (visitTime == null) {
 				visitTime = EnvironmentUtils.getCurrentTime();
 			}
 			DateTime theVisitTime = new DateTime(visitTime);
