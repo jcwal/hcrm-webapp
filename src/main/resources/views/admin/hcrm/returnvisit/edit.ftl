@@ -10,7 +10,7 @@
 						<tr>
 							<th><label>住院号：</label></th>
 							<td>
-								<span data-bind="text: patient.hospitalNumber"></span>
+								<a href="javascript:void(0);" id="hospitalNumberId"><span data-bind="text: patient.hospitalNumber"></span></a>
 							</td>
 							<th><label>病人姓名：</label></th>
 							<td><span data-bind="text: patient.userName"></span></td>

@@ -289,6 +289,22 @@ public class HospitalSchemaRegistory {
 		schema.addParam(param);
 
 		column = new FinderColumn();
+		column.setLabel("出院诊断");
+		column.setColumn("DISCHARGEDIAGNOSIS");
+		column.setName("DISCHARGEDIAGNOSIS");
+		column.setType(DataType.String);
+		column.setVisible(false);
+		column.setWidth(1);
+		schema.addColumn(column);
+
+		param = new FinderParam(column, null);
+		param.setEnableSearch(true);
+		param.setEnableFilter(true);
+		param.setDefaultCriteriaType(CriteriaType.Contains);
+		param.setFieldControl(FieldControl.Text);
+		schema.addParam(param);
+
+		column = new FinderColumn();
 		column.setLabel("入院时间");
 		column.setColumn("ADMISSIONTIME");
 		column.setName("ADMISSIONTIME");

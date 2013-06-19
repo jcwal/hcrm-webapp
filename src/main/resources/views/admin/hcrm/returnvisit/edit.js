@@ -40,4 +40,7 @@ $(function() {
 			ko.applyBindings(viewModel, $content[0]);
 		});
 	}
+	$('#hospitalNumberId').click(function(){
+			window.open( $form.getContextPath() + '/admin/hcrm/patient/list/macula-mda/finder/PATIENT_SCHEMA/detail?item=' + viewModel.patient.id());
+	});
 });
