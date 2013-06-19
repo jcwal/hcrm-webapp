@@ -10,10 +10,10 @@
 						<tr>
 							<th><label>住院号：</label></th>
 							<td>
-								<input type="text" name="patient.hospitalNumber" maxlength="50" data-bind="value: hospitalNumber" validate="required:true,rangelength:[1,20]" style="width: 170px;" />
+								<input type="text" name="patient.hospitalNumber" maxlength="50" data-bind="value: hospitalNumber" validate="required:true,rangelength:[1,100]" style="width: 170px;" />
 							</td>
 							<th><label>病人姓名：</label></th>
-							<td><input type="text" name="patient.userName" maxlength="20" data-bind="value: userName" validate="required:true,rangelength:[1,20]" style="width: 170px;" /></td>
+							<td><input type="text" name="patient.userName" maxlength="20" data-bind="value: userName" validate="required:true,rangelength:[1,100]" style="width: 170px;" /></td>
 						</tr>
 						<tr>
 							<th><label>性别：</label></th>
@@ -37,7 +37,7 @@
 						<tr>
 							<th><label>住址：</label></th>
 							<td colspan="3">
-								<input type="text" name="patient.address" data-bind="value: address"  style="width: 477px;"  validate="rangelength:[0,255]"/>
+								<input type="text" name="patient.address" data-bind="value: address"  style="width: 477px;"/>
 							</td>							
 						</tr>
 						<tr>
@@ -47,7 +47,7 @@
 							</td>
 							<th><label>病种：</label></th>
 							<td>
-								<input type="text" name="patient.disease" data-bind="value: disease"  style="width: 170px;"  validate="rangelength:[0,20]"/>
+								<input type="text" name="patient.disease" data-bind="value: disease"  style="width: 170px;"/>
 							</td>							
 						</tr>
 						<tr>
@@ -57,7 +57,7 @@
 							</td>
 							<th><label>出院情况：</label></th>
 							<td>
-								<input type="text" name="patient.dischargeType" data-bind="value: dischargeType"  style="width: 170px;"  validate="rangelength:[0,20]"/>
+								<input type="text" name="patient.dischargeType" data-bind="value: dischargeType"  style="width: 170px;"/>
 							</td>							
 						</tr>
 						<tr>
@@ -67,7 +67,7 @@
 							</td>
 							<th><label>科室：</label></th>
 							<td>
-								<input type="text" name="patient.department" data-bind="value: department"  style="width: 170px;"  validate="rangelength:[0,20]"/>
+								<input type="text" name="patient.department" data-bind="value: department"  style="width: 170px;"  validate="rangelength:[0,255]"/>
 							</td>							
 						</tr>
 						<tr>
@@ -83,25 +83,25 @@
 						<tr>
 							<th><label>出院诊断：</label></th>
 							<td colspan="3">
-								<textarea name="patient.dischargeDiagnosis" rows="2" cols="50" data-bind="value: dischargeDiagnosis" style="width: 477px;" validate="rangelength:[0,1024]"></textarea>
+								<textarea name="patient.dischargeDiagnosis" rows="2" cols="50" data-bind="value: dischargeDiagnosis" style="width: 477px;"></textarea>
 							</td>
 						</tr>
 						<tr>
 							<th><label>病理诊断：</label></th>
 							<td colspan="3">
-								<textarea type="text" name="patient.pathologicalDiagnosis" rows="2" cols="50" data-bind="value: pathologicalDiagnosis" style="width: 477px;" validate="rangelength:[0,1024]"></textarea>
+								<textarea type="text" name="patient.pathologicalDiagnosis" rows="2" cols="50" data-bind="value: pathologicalDiagnosis" style="width: 477px;"></textarea>
 							</td>							
 						</tr>
 						<tr>
 							<th><label>化验检查结果：</label></th>
 							<td colspan="3">
-								<textarea name="patient.treatment" rows="2" cols="50" data-bind="value: treatment" validate="rangelength:[0,2048]" style="width: 477px;"></textarea>
+								<textarea name="patient.treatment" rows="2" cols="50" data-bind="value: treatment" style="width: 477px;"></textarea>
 							</td>
 						</tr>
 						<tr>
 							<th><label>出院医嘱：</label></th>
 							<td colspan="3">
-								<textarea name="patient.dischargeAdvice" rows="2" cols="50" data-bind="value: dischargeAdvice" validate="rangelength:[0,2048]" style="width: 477px;"></textarea>
+								<textarea name="patient.dischargeAdvice" rows="2" cols="50" data-bind="value: dischargeAdvice" style="width: 477px;"></textarea>
 							</td>
 						</tr>
 						<tr>
