@@ -160,6 +160,14 @@ public class HospitalSchemaRegistory {
 		action.setMinRowSelected(1);
 		schema.addAction(action);
 
+		action = new FinderAction();
+		action.setLabel("角色授权");
+		action.setMinRowSelected(1);
+		action.setMaxRowSelected(1);
+		action.setTarget("dialog::{title:'角色授权',width:'800',height:'600',type:'POST'}");
+		action.setHref("admin/macula-base/sysuser/admingrant");
+		schema.addAction(action);
+
 		return schema;
 	}
 
