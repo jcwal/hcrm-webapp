@@ -28,27 +28,29 @@ public class PatientReturnVisitScheduler {
 		log.info("Start check patient return visit.....");
 		List<Patient> patients = patientRepository.getUnscheduledPatient();
 		for (Patient patient : patients) {
-			Date visitTime = patient.getNextVisitTime();
-			if (visitTime == null) {
-				visitTime = patient.getDischargeTime();
+			if (patient.getVisitGap() > 0) {
+				Date visitTime = patient.getNextVisitTime();
+				if (visitTime == null) {
+					visitTime = patient.getDischargeTime();
+				}
+				if (visitTime == null) {
+					visitTime = EnvironmentUtils.getCurrentTime();
+				}
+				DateTime theVisitTime = new DateTime(visitTime);
+				while (theVisitTime.isBefore(EnvironmentUtils.getCurrentTime().getTime())) {
+					theVisitTime = theVisitTime.plusDays(patient.getVisitGap());
+				}
+				visitTime = theVisitTime.toDate();
+				List<ReturnVisit> returnVisit = returnVisitRepository.findByPatientPlanVistTime(patient, visitTime);
+				if (returnVisit.isEmpty()) {
+					ReturnVisit visit = new ReturnVisit();
+					visit.setPatient(patient);
+					visit.setPlanVisitDate(visitTime);
+					returnVisitRepository.save(visit);
+				}
+				patient.setNextVisitTime(visitTime);
+				patientRepository.save(patient);
 			}
-			if (visitTime == null) {
-				visitTime = EnvironmentUtils.getCurrentTime();
-			}
-			DateTime theVisitTime = new DateTime(visitTime);
-			while (theVisitTime.isBefore(EnvironmentUtils.getCurrentTime().getTime())) {
-				theVisitTime = theVisitTime.plusDays(patient.getVisitGap());
-			}
-			visitTime = theVisitTime.toDate();
-			List<ReturnVisit> returnVisit = returnVisitRepository.findByPatientPlanVistTime(patient, visitTime);
-			if (returnVisit.isEmpty()) {
-				ReturnVisit visit = new ReturnVisit();
-				visit.setPatient(patient);
-				visit.setPlanVisitDate(visitTime);
-				returnVisitRepository.save(visit);
-			}
-			patient.setNextVisitTime(visitTime);
-			patientRepository.save(patient);
 		}
 
 	}

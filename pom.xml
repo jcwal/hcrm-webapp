@@ -16,6 +16,22 @@
 		<spring.version>3.2.2.RELEASE</spring.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>macula-repo</id>
+			<name>macula-repo</name>
+			<url>http://maven.infinitus.com.cn:8081/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>macula-plugin-repo</id>
+			<name>macula-plugin-repo</name>
+			<url>http://maven.infinitus.com.cn:8081/nexus/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<plugins>
 			<plugin>
