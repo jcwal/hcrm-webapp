@@ -365,13 +365,13 @@ public class HospitalSchemaRegistory {
 		FinderAction action = new FinderAction();
 		action.setLabel("新增病人");
 		action.setHref("admin/hcrm/patient/create");
-		action.setTarget("dialog::{title: '新增病人', width:'650',height:'620'}");
+		action.setTarget("dialog::{title: '新增病人', width:'680',height:'620'}");
 		schema.addAction(action);
 
 		action = new FinderAction();
 		action.setLabel("编辑病人");
 		action.setHref("admin/hcrm/patient/edit");
-		action.setTarget("dialog::{title: '编辑病人', width:'650',height:'620'}");
+		action.setTarget("dialog::{title: '编辑病人', width:'680',height:'620'}");
 		action.setMaxRowSelected(1);
 		action.setMinRowSelected(1);
 		schema.addAction(action);
@@ -562,7 +562,7 @@ public class HospitalSchemaRegistory {
 		FinderAction action = new FinderAction();
 		action.setLabel("处理回访信息");
 		action.setHref("admin/hcrm/returnvisit/edit");
-		action.setTarget("dialog::{title: '处理回访', width:'650',height:'400'}");
+		action.setTarget("dialog::{title: '处理回访', width:'650',height:'500'}");
 		action.setMaxRowSelected(1);
 		action.setMinRowSelected(1);
 		schema.addAction(action);

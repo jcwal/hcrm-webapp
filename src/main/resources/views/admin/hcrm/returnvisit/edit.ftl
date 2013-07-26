@@ -61,6 +61,16 @@
 								<textarea name="returnvisit.comment" rows="5" cols="50" maxlength="1024" data-bind="value: comment"  validate="rangelength:[0,1024]" style="width: 477px;" />
 							</td>
 						</tr>
+						<tr>
+							<th><label>回访间隔(天)：</label></th>
+							<td>
+								<input type="text" name="returnvisit.patient.visitGap" data-bind="value: patient.visitGap" style="width: 170px;" validate="required:true,number:true"/>
+							</td>
+							<th><label>下次生成日期：</label></th>
+							<td>
+								<input type="text" data-bind="value: nextCreateTime, type: 'date' " style="width: 170px;" readonly="true" disabled="true"/>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

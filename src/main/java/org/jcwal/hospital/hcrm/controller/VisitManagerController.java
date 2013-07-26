@@ -3,6 +3,7 @@ package org.jcwal.hospital.hcrm.controller;
 import javax.validation.Valid;
 
 import org.jcwal.hospital.hcrm.domain.ReturnVisit;
+import org.jcwal.hospital.hcrm.repository.PatientRepository;
 import org.jcwal.hospital.hcrm.repository.ReturnVisitRepository;
 import org.jcwal.hospital.hcrm.service.impl.HospitalSchemaRegistory;
 import org.macula.base.security.util.SecurityUtils;
@@ -24,6 +25,8 @@ public class VisitManagerController extends AdminHCRMBaseController {
 
 	@Autowired
 	private ReturnVisitRepository returnVisitRepository;
+	@Autowired
+	private PatientRepository patientRepository;
 
 	@RequestMapping(value = "/returnvisit/list", method = RequestMethod.GET)
 	public View index() {
@@ -44,6 +47,7 @@ public class VisitManagerController extends AdminHCRMBaseController {
 			throw new FormBindException(getMergedBindingResults());
 		}
 		returnVisitRepository.save(returnVisit);
+		patientRepository.save(returnVisit.getPatient());
 		return returnVisit.getId();
 	}
 
