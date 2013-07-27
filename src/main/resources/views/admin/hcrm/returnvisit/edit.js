@@ -34,7 +34,8 @@ $(function() {
 			}
 			ko.mapping.updateFromJS(viewModel, data.returnObject);
 			viewModel.nextCreateTime = ko.dependentObservable(function() {
-				var date = new Date(viewModel.patient.nextVisitTime());
+				var date = new Date();
+				date.setISO8601(viewModel.patient.nextVisitTime());
 				date.setTime(date.getTime() + viewModel.patient.visitGap() * 24 * 60 * 60 * 1000);
 				return date;
 			});
