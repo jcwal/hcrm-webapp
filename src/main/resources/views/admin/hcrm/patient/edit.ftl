@@ -77,7 +77,7 @@
 							</td>
 							<th><label>住院医生：</label></th>
 							<td>
-								<select name="patient.residentDoctorId" data-bind="options: $Param('hcrm_doctor_list','${base}'), optionsCaption: '请选择...', optionsText: 'label', optionsValue:'code', value: residentDoctorId" style="width: 175px;" />	
+								<select name="patient.residentDoctorId" data-bind="options: $Param('hcrm_doctor_list','${base}'), optionsCaption: '请选择...', optionsText: 'label', optionsValue:'code', value: residentDoctorId" style="width: 175px;" validate="required:true"/>	
 							</td>							
 						</tr>
 						<tr>
