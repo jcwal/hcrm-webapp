@@ -23,6 +23,7 @@ public class HospitalSchemaRegistory {
 	public static final String DOCTOR_SCHEMA = "DOCTOR_SCHEMA";
 	public static final String PATIENT_SCHEMA = "PATIENT_SCHEMA";
 	public static final String VISIT_SCHEMA = "VISIT_SCHEMA";
+	public static final String WORKLOAD_SCHEMA = "WORKLOAD_SCHEMA";
 
 	@Autowired
 	private FinderSchemaService memorySchemaService;
@@ -32,6 +33,64 @@ public class HospitalSchemaRegistory {
 		memorySchemaService.add(createPatientSchema());
 		memorySchemaService.add(createDoctorSchema());
 		memorySchemaService.add(createReturnVisitSchema());
+		memorySchemaService.add(createWorkloadSchema());
+	}
+
+	private FinderSchema createWorkloadSchema() {
+		FinderSchema schema = new FinderSchema();
+		schema.setCode(WORKLOAD_SCHEMA);
+		schema.setTitle("医生工作量统计");
+		schema.setRelativePath("admin/hcrm/workload/list");
+
+		FinderDataSet finderDataSet = new FinderDataSet("HCRM_WORKLOAD_SET");
+		schema.setFinderDataSet(finderDataSet);
+
+		FinderColumn column = new FinderColumn();
+
+		column.setLabel("主键");
+		column.setColumn("pk");
+		column.setName("pk");
+		column.setType(DataType.String);
+		column.setPkey(true);
+		column.setVisible(false);
+		schema.addColumn(column);
+
+		column = new FinderColumn();
+		column.setLabel("住院医生");
+		column.setColumn("DOCTOR_NAME");
+		column.setName("DOCTOR_NAME");
+		column.setType(DataType.String);
+		column.setVisible(true);
+		column.setWidth(300);
+		schema.addColumn(column);
+
+		column = new FinderColumn();
+		column.setLabel("住院天数");
+		column.setColumn("DOCTOR_DAYS");
+		column.setName("DOCTOR_DAYS");
+		column.setType(DataType.Integer);
+		column.setVisible(true);
+		column.setWidth(200);
+		schema.addColumn(column);
+
+		column = new FinderColumn();
+		column.setLabel("住院人数");
+		column.setColumn("DOCTOR_COUNTS");
+		column.setName("DOCTOR_COUNTS");
+		column.setType(DataType.Integer);
+		column.setVisible(true);
+		column.setWidth(200);
+		schema.addColumn(column);
+
+		FinderDetailView detailView = new FinderDetailView();
+		detailView.setCode("patientdetail");
+		detailView.setLabel("回访明细");
+		detailView.setHref("admin/hcrm/workload/detail");
+		schema.addDetailView(detailView);
+
+		schema.setEnableFilter(true);
+
+		return schema;
 	}
 
 	private FinderSchema createDoctorSchema() {
@@ -177,7 +236,7 @@ public class HospitalSchemaRegistory {
 		schema.setTitle("病人管理");
 		schema.setRelativePath("admin/hcrm/patient/list");
 
-		FinderDataSet finderDataSet = new FinderDataSet("HCRM_PATIENT_SET");
+		FinderDataSet finderDataSet = new FinderDataSet("HCRM_PATIENT_SET2");
 		schema.setFinderDataSet(finderDataSet);
 
 		FinderParam param = null;
@@ -345,6 +404,15 @@ public class HospitalSchemaRegistory {
 		param.setDefaultCriteriaType(CriteriaType.AfterThan);
 		param.setFieldControl(FieldControl.Date);
 		schema.addParam(param);
+
+		column = new FinderColumn();
+		column.setLabel("住院天数");
+		column.setColumn("DAYS");
+		column.setName("DAYS");
+		column.setType(DataType.Integer);
+		column.setVisible(true);
+		column.setWidth(50);
+		schema.addColumn(column);
 
 		column = new FinderColumn();
 		column.setLabel("住院医生");

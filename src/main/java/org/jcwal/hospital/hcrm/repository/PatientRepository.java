@@ -15,14 +15,21 @@
  */
 package org.jcwal.hospital.hcrm.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.jcwal.hospital.hcrm.domain.Patient;
 import org.macula.core.repository.MaculaJpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface PatientRepository extends MaculaJpaRepository<Patient, Long> {
 
 	@Query("from Patient t where t.nextVisitTime is null or t.nextVisitTime < sysdate")
 	List<Patient> getUnscheduledPatient();
+
+	@Query("from Patient t where t.residentDoctor.id = :doctorId and t.dischargeTime <= :maxDay and t.dischargeTime >= :minDay order by t.dischargeTime")
+	List<Patient> findDoctorPatients(@Param("doctorId") Long doctorId, @Param("maxDay") Date maxDay,
+			@Param("minDay") Date minDay);
+
 }

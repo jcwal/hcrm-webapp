@@ -411,4 +411,11 @@ public class Patient extends AbstractAuditable<Long> {
 	public void setBedDoctorId(Long id) {
 		this.setBedDoctor(id == null ? null : new Doctor(id));
 	}
+
+	public int getResidentDays() {
+		if (this.getAdmissionTime() == null || this.getDischargeTime() == null) {
+			return 0;
+		}
+		return (int) ((this.getDischargeTime().getTime() - this.getAdmissionTime().getTime()) / (24 * 60 * 60 * 1000)) + 1;
+	}
 }

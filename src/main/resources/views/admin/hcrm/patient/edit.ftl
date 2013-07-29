@@ -43,7 +43,7 @@
 						<tr>
 							<th><label>入院时间：</label></th>
 							<td>
-								<input type="text" id="admissionTime" name="patient.admissionTime" data-bind="value: admissionTime, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}',maxDate:'#F{$dp.$D(\'dischargeTime\',{m:-1})}'})"  style="width: 170px;"/>
+								<input type="text" id="admissionTime" name="patient.admissionTime" data-bind="value: admissionTime, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}',maxDate:'#F{$dp.$D(\'dischargeTime\',{m:-1})}'})"  validate="required:true" style="width: 170px;"/>
 							</td>
 							<th><label>病种：</label></th>
 							<td>
@@ -53,7 +53,7 @@
 						<tr>
 							<th><label>出院时间：</label></th>
 							<td>
-								<input type="text" id="dischargeTime" name="patient.dischargeTime" data-bind="value: dischargeTime, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}',minDate:'#F{$dp.$D(\'admissionTime\',{m:1})}'})"  style="width: 170px;"/>
+								<input type="text" id="dischargeTime" name="patient.dischargeTime" data-bind="value: dischargeTime, type: 'date' " autocomplete="off" class="Wdate" onFocus="WdatePicker({dateFmt:'${datePattern}',minDate:'#F{$dp.$D(\'admissionTime\',{m:1})}'})"  validate="required:true" style="width: 170px;"/>
 							</td>
 							<th><label>出院情况：</label></th>
 							<td>
