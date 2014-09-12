@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * <p> <b>JcwalMenuAdminController</b> 是菜单获取的Controller. </p>
  * 
  * @since 2011-3-17
- * @author Wilson Luo
+ * @author jokeway
  * @version $Id: JcwalMenuAdminController.java 3508 2012-08-22 10:24:12Z wilson $
  */
 @Controller

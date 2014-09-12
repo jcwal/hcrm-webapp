@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  * </p>
  * 
  * @since 2011-6-10
- * @author Wilson Luo
+ * @author jokeway
  * @version $Id: HospitalDoctorLoginRepository.java 3663 2012-10-31 08:51:06Z wilson $
  */
 @Component

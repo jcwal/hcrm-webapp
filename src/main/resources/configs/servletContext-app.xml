@@ -34,6 +34,7 @@
 			<mvc:mapping path="/admin/macula-report/**" />
 			<mvc:mapping path="/front/macula-report/**" />
 			<mvc:mapping path="/admin/hcrm/**" />
+			<mvc:mapping path="/admin/macula-trial/**" />
 			<bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
 				<property name="entityManagerFactory" ref="#{T(org.macula.Configuration).getEntityManagerFactoryName()}" />
 			</bean>

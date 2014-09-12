@@ -81,6 +81,7 @@
 						<value>org.macula.base.security.domain</value>
 						<value>org.macula.base.data.domain</value>
 						<value>org.jcwal.hospital.hcrm.domain</value>
+						<value>org.jcwal.trial.domain</value>
 					</array>
 				</property>
 			</bean>

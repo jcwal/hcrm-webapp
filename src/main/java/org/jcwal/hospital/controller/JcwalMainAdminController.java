@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * <p> <b>JcwalMainAdminController</b> 测试用的首页. </p>
  * 
  * @since 2011-5-6
- * @author Wilson Luo
+ * @author jokeway
  * @version $Id: JcwalMainAdminController.java 2350 2011-11-07 03:06:00Z wzp $
  */
 @Controller

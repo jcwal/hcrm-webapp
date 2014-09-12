@@ -13,7 +13,7 @@ import org.macula.core.mvc.annotation.OpenApi;
 import org.macula.plugins.mda.finder.view.FinderView;
 import org.macula.plugins.mda.finder.vo.FinderSelection;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +28,7 @@ public class DoctorManagerController extends AdminHCRMBaseController {
 	@Autowired
 	private DoctorRepository doctorRepository;
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private Md5PasswordEncoder passwordEncoder;
 
 	@RequestMapping(value = "/doctor/list", method = RequestMethod.GET)
 	public View index() {
