@@ -1,0 +1,16 @@
+<spring:beans xmlns="http://www.maculaframework.org/schema/data" xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+    		http://www.maculaframework.org/schema/data http://www.maculaframework.org/schema/data/macula-data.xsd">
+
+	<dataset id="SO_MASTER_SET" name="销售单信息列表">
+		<expressionText>
+		<![CDATA[
+select t.* from SO_MASTER t
+		]]>
+		</expressionText>
+		<pagable>true</pagable>
+		<dataSource>LOCAL_DS</dataSource>		
+	</dataset>
+</spring:beans>  
