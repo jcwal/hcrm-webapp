@@ -12,12 +12,12 @@ import javax.servlet.http.HttpSession;
 
 import org.jasig.cas.client.util.AbstractCasFilter;
 import org.jasig.cas.client.validation.Assertion;
-import org.macula.base.security.authentication.CaptchaUsernamePasswordAuthenticationFilter;
 import org.macula.base.security.captcha.CaptchaIdGenerator;
 import org.macula.base.security.captcha.CaptchaStatus;
 import org.macula.base.security.captcha.CaptchaStatusFactory;
 import org.macula.base.security.captcha.CaptchaStatusStorage;
 import org.macula.base.security.util.SecurityUtils;
+import org.macula.base.security.web.form.CaptchaUsernamePasswordAuthenticationFilter;
 import org.macula.core.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;

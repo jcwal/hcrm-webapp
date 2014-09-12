@@ -93,7 +93,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="changeLog" value="classpath:db/changelog-macula.xml" />
 	</bean>
-	-->
+	 -->
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="#{T(org.macula.Configuration).getEntityManagerFactoryName()}" />
@@ -112,7 +112,7 @@
 		<aop:advisor advice-ref="maculaTxAdvise" pointcut-ref="maculaPointcut" />
 	</aop:config>
 
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<bean id="jdbcTemplate_macula" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg index="0" ref="dataSource" />
 	</bean>
  	

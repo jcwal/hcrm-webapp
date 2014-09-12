@@ -48,6 +48,7 @@ $(function() {
 	}
 
 	$('#loginCode,#loginCode_a').click(function() {
+		alert('x');
 		updateCaptcha();
 	});
 

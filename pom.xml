@@ -11,9 +11,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdkLevel>1.6</jdkLevel>
 		<jvmargs>-XX:MaxPermSize=384m -Xms512m -Xmx1024m</jvmargs>
-		<macula.version>2.1.0-SNAPSHOT</macula.version>
-		<macula.plugins.version>2.1.0-SNAPSHOT</macula.plugins.version>
-		<spring.version>3.2.2.RELEASE</spring.version>
+		<macula.version>2.1.4.RELEASE</macula.version>
+		<macula.plugins.version>2.1.4.RELEASE</macula.plugins.version>
+		<spring.version>3.2.5.RELEASE</spring.version>
 	</properties>
 
 	<repositories>
@@ -88,7 +88,7 @@
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.2.8</version>
+			<version>2.3.2</version>
 		</dependency>
 	</dependencies>
 

@@ -9,7 +9,7 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:file:./data/hcrm" />
+		<property name="url" value="jdbc:hsqldb:file:../data/hcrm" />
 		<property name="username" value="sa" />
 		<property name="maxActive" value="10" />
 	</bean>
