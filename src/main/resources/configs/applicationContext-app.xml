@@ -109,8 +109,9 @@
 		<aop:pointcut id="maculaPointcut"
 			expression="execution(* org.macula..*.*(..)) and !execution(* org.jcwal.hospital..*.*(..)) and @within(org.springframework.stereotype.Service)" />
 		<aop:pointcut id="maculaHospitalPointcut"
-			expression="execution(* org.jcwal.hospital..*.*(..)) and @within(org.springframework.stereotype.Service)" />
+			expression="execution(* org.jcwal..*.*(..)) and @within(org.springframework.stereotype.Service)" />
 		<aop:advisor advice-ref="maculaTxAdvise" pointcut-ref="maculaPointcut" />
+		<aop:advisor advice-ref="maculaTxAdvise" pointcut-ref="maculaHospitalPointcut" />
 	</aop:config>
 
 	<bean id="jdbcTemplate_macula" class="org.springframework.jdbc.core.JdbcTemplate">
