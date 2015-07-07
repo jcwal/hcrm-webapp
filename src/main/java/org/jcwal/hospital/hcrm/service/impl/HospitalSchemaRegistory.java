@@ -629,8 +629,8 @@ public class HospitalSchemaRegistory {
 
 		FinderAction action = new FinderAction();
 		action.setLabel("处理回访信息");
-		action.setHref("admin/hcrm/returnvisit/edit");
-		action.setTarget("dialog::{title: '处理回访', width:'650',height:'500'}");
+		action.setHref("admin/hcrm/doctor/list/macula-mda/dialog/DOCTOR_SCHEMA?tab=");
+		action.setTarget("dialog::{title: '处理回访', width:'1050',height:'500'}");
 		action.setMaxRowSelected(1);
 		action.setMinRowSelected(1);
 		schema.addAction(action);
