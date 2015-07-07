@@ -193,6 +193,7 @@
 	  				<td>
 	  					<#if !schema.singleSelection>
 	  					<div class="col-select-opt">
+		  					<#--
 		  					<div id="col-select-opt-inner-${schema.code}" class="col-select-opt-inner" dropmenu="col-select-opt-items-${schema.code}">	
           						<input type="checkbox" class="sellist" onclick='this.blur()'/>
 		  						<@macula.maculauiImage src="arrow-down.gif" />
@@ -203,6 +204,7 @@
 										<li class="item" onclick="$(this).trigger('${schema.code}_rowall_unselected_');return false;">无</li>
 								  </ul>
 							</div>
+							-->
 		  				</div>
 		  				</#if>
 	  				</td>
