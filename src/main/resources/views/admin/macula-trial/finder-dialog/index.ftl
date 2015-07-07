@@ -30,7 +30,7 @@
 								${ID}
 							</td>
 							<td>
-								${USERNAME}
+								${NICKNAME}
 							</td>
 						</tr>
 					{{/each}} 

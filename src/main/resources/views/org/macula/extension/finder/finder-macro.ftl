@@ -153,18 +153,18 @@
 		    </form>
 		  </div>
 	  </#if>	
-		<div class="side-r hide" id="dlg-side-r" style="width:100%;float:right;">
+		<div class="side-r hide" id="dlg-side-r" style="width:100%;float:right; background-color: aliceblue;">
 			<div class="side-r-top clearfix">
 				<b class="side-r-title flt f-14"></b>
 				<span class="frt side-r-close pointer">
 					<@macula.themeImage src="arrow_close.gif" />
 				</span>
 			</div>
-			<div id="side-r-head" class="side-r-head">
+			<div id="side-r-head" class="side-r-head" style="background-color: aliceblue;">
 			</div>
-			<div id="side-r-content" class="side-r-content">
+			<div id="side-r-content" class="side-r-content" style="background-color: aliceblue;">
 			</div>
-			<div id="side-r-foot" class="side-r-foot">
+			<div id="side-r-foot" class="side-r-foot" style="background-color: aliceblue;">
 			</div>
 		</div>
 	</div>
