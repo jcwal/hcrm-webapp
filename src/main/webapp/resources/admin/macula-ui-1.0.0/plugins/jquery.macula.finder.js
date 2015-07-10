@@ -29,7 +29,13 @@
 
 				$(document.body).unbind(dlgId).bind(dlgId, function(e, data) {
 					$(data).each(function(){
-						targetValue.push(this);						
+						var row = $.extend(this,{});
+						if(mapping != undefined) {
+							$.each(mapping,function (key, value) {
+								row[key] = row[value];
+							});
+						}
+						targetValue.push(row);						
 					});
 				});
 

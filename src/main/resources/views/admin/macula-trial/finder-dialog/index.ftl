@@ -7,7 +7,7 @@
 		
 	<@layout.content_main>	
 		<div id="finder-dialog-content">
-			<button id="edit-action-${code}" type="button" class="btn btn-has-icon" data-bind="finder2dialog: content, finder: 'DOCTOR_SCHEMA'"
+			<button id="edit-action-${code}" type="button" class="btn btn-has-icon" data-bind="finder2dialog: content, finder: 'DOCTOR_SCHEMA', mapping:{'myid':'ID','mynickname':'NICKNAME'}"
 	  				href="javascript:void(0);" target="dialog::{title: '选择医生', width:'920',height:'550'}"
 	  			>
 	  			<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_edit.gif"/></i>选择医生</span></span>
@@ -18,6 +18,8 @@
 	  				<tr>
 	  					<td>ID</td>
 	  					<td>姓名</td>
+	  					<td>myid</td>
+	  					<td>mynickname</td>
 	  				</tr>
 	  			</thead>
 	  			<tbody data-bind="template: { name: 'finder-data-tmpl-${code}' }"></tbody>
@@ -31,6 +33,12 @@
 							</td>
 							<td>
 								${NICKNAME}
+							</td>
+							<td>
+								${myid}
+							</td>
+							<td>
+								${mynickname}
 							</td>
 						</tr>
 					{{/each}} 
