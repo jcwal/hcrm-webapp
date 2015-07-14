@@ -25,19 +25,7 @@
 					var params = target.split('::');
 					mode = params[0], extra = JSON.decode(params[1] || '{}');
 				}
-				var dlgId = '-page-dialog-' + finderCode;
-
-				$(document.body).unbind(dlgId).bind(dlgId, function(e, data) {
-					$(data).each(function(){
-						var row = $.extend(this,{});
-						if(mapping != undefined) {
-							$.each(mapping,function (key, value) {
-								row[key] = row[value];
-							});
-						}
-						targetValue.push(row);						
-					});
-				});
+				var dlgId = '-page-dialog-' + finderCode+'-' +( dialogIndex++);
 
 				$target.bind('click', function(e) {
 					var $dialog = new $.dialog($.extend({
@@ -57,7 +45,31 @@
 							}, extra));
 						}
 					}, extra));
+
 					$dialog.ShowDialog();
+
+					$('#lhgdlg_' + dlgId).unbind('finder2dialog').bind('finder2dialog', function(e, data) {
+						$(data).each(function(){
+							var row = $.extend(this,{});
+							if(mapping != undefined) {
+								$.each(mapping,function (key, value) {
+									row[key] = row[value];
+								});
+							}
+							if ($.isFunction(targetValue.push)) {
+								targetValue.push(row);
+							} else {
+								$.each(row, function(key, value) {
+									row[key] = row[value];
+									if ($.isFunction(targetValue[key])) {
+										targetValue[key](value);
+									}
+								});
+								return false;
+							}
+						});
+					});
+					
 					return false;
 				});
 			}
@@ -617,8 +629,7 @@
 						result.push(this);
 					}
 				});
-				var dlgId = '-page-dialog-' + code;
-				choiceAction.trigger(dlgId, [result]);
+				choiceAction.trigger('finder2dialog', [result]);
 				choiceAction.trigger('closeDialog');
 				return false;
 			});

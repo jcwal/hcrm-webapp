@@ -3,7 +3,11 @@ $(function() {
 	var code = 'doctor-list';
 
 	var tableViewModel = ko.mapping.fromJS({
-		content : []
+		content : [],
+		myObject :{
+			myid: '123',
+			mynickname: '张三'
+		}
 	});
 	
 	ko.applyBindings(tableViewModel, $('#finder-dialog-content')[0]);

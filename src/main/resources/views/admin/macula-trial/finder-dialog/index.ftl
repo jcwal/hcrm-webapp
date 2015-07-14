@@ -7,8 +7,9 @@
 		
 	<@layout.content_main>	
 		<div id="finder-dialog-content">
-			<button id="edit-action-${code}" type="button" class="btn btn-has-icon" data-bind="finder2dialog: content, finder: 'DOCTOR_SCHEMA', mapping:{'myid':'ID','mynickname':'NICKNAME'}"
-	  				href="javascript:void(0);" target="dialog::{title: '选择医生', width:'920',height:'550'}"
+			<button id="edit-action-${code}" type="button" class="btn btn-has-icon" 
+					data-bind="finder2dialog: content, finder: 'DOCTOR_SCHEMA', mapping:{'myid':'ID','mynickname':'NICKNAME'}"
+	  				href="javascript:void(0);" target="dialog::{title: '选择医生', width:'920',height:'350'}"
 	  			>
 	  			<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_edit.gif"/></i>选择医生</span></span>
 	  		</button>
@@ -24,6 +25,15 @@
 	  			</thead>
 	  			<tbody data-bind="template: { name: 'finder-data-tmpl-${code}' }"></tbody>
 	  		</table>
+	  		<p/>
+	  		<button id="edit-action2-${code}" type="button" class="btn btn-has-icon" 
+					data-bind="finder2dialog: myObject, finder: 'DOCTOR_SCHEMA', mapping:{'myid':'ID','mynickname':'NICKNAME'}"
+	  				href="javascript:void(0);" target="dialog::{title: '选择单个医生', width:'920',height:'350'}"
+	  			>
+	  			<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_edit.gif"/></i>选择单个医生</span></span>
+	  		</button>
+	  		<p/>
+	  		<input type="text" data-bind="value: myObject.myid" /><input type="text" data-bind="value: myObject.mynickname" />
 	  		<script id="finder-data-tmpl-${code}" type="text/x-jquery-tmpl">
 				<#noparse>
 					{{each(i,row) content}}
