@@ -18,8 +18,18 @@
 	ko.bindingHandlers['finder2dialog'] = {
 			'init' : function(element, valueAccessor, allBindingsAccessor, viewModel) {
 				var targetValue = valueAccessor(), allBindings = allBindingsAccessor(), finderCode = allBindings['finder'], mapping = allBindings['mapping'];
+				var staticParams =  allBindings['staticParams'];
 				var $target = $(element), target = $target.attr('target'), url = 'admin/macula-mda/dialog/'
 					+ finderCode + '?tab=';
+				if (staticParams) {
+					var queryPart = '', index=0;
+					$.each(staticParams, function(key, value) {
+						queryPart += '&staticParams['+ index +'].name=' + key;
+						queryPart += '&staticParams['+ index +'].value=' + value;
+						index++;
+					});
+					url += queryPart;					
+				}
 				var mode = target, extra = {};
 				if (target.match(/::/)) {
 					var params = target.split('::');

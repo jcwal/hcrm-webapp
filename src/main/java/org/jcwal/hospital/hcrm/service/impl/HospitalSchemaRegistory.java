@@ -110,7 +110,7 @@ public class HospitalSchemaRegistory {
 		column.setName("id");
 		column.setType(DataType.Long);
 		column.setPkey(true);
-		column.setVisible(false);
+		column.setVisible(true);
 		schema.addColumn(column);
 
 		column = new FinderColumn();
