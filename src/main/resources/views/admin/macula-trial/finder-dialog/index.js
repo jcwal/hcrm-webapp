@@ -4,12 +4,14 @@ $(function() {
 
 	var tableViewModel = ko.mapping.fromJS({
 		content : [],
-		myObject :{
-			myid: '123',
-			mynickname: '张三'
-		}
+		myObject : {
+			myid : '123',
+			mynickname : '张三'
+		},
+		rootId : '123',
+		rootNickname : '张三'
 	});
-	
+
 	ko.applyBindings(tableViewModel, $('#finder-dialog-content')[0]);
 
 });

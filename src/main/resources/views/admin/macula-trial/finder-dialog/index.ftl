@@ -35,6 +35,16 @@
 	  		</button>
 	  		<p/>
 	  		<input type="text" data-bind="value: myObject.myid" /><input type="text" data-bind="value: myObject.mynickname" />
+	  		<p/>
+	  		<button id="edit-action2-${code}" type="button" class="btn btn-has-icon" 
+					data-bind="finder2dialog: $root, finder: 'DOCTOR_SCHEMA', mapping:{'rootId':'ID','rootNickname':'NICKNAME'}"
+	  				href="javascript:void(0);" target="dialog::{title: '选择根医生', width:'920',height:'350'}"
+	  			>
+	  			<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_edit.gif"/></i>选择单个医生</span></span>
+	  		</button>
+	  		<p/>
+	  		<input type="text" data-bind="value: rootId" /><input type="text" data-bind="value: rootNickname" />
+	  		
 	  		<script id="finder-data-tmpl-${code}" type="text/x-jquery-tmpl">
 				<#noparse>
 					{{each(i,row) content}}
