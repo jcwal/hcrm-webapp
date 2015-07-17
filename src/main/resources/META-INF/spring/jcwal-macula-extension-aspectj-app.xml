@@ -12,7 +12,6 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<bean class="org.macula.extension.aspectj.SampleAspectjInterceptor" />
 	<aop:aspectj-autoproxy />
 	<context:component-scan base-package="org.macula.extension.aspectj" />
 

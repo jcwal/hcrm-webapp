@@ -21,6 +21,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -32,6 +33,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * @version $Id: codetemplates.xml 3814 2012-11-21 08:46:30Z wilson $
  */
 @Aspect
+@Component
 public class SampleAspectjInterceptor {
 
 	@Pointcut("@annotation(sampleAnnotation)")
