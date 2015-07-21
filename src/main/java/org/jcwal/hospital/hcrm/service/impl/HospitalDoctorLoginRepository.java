@@ -1,6 +1,4 @@
-/**
- * HospitalDoctorLoginRepository.java 2011-6-10
- */
+ 
 package org.jcwal.hospital.hcrm.service.impl;
 
 import java.util.HashMap;
@@ -14,16 +12,7 @@ import org.macula.base.security.service.CustomUserLoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-
-/**
- * <p>
- * <b>HospitalDoctorLoginRepository</b> 是本地用户登录实现.
- * </p>
- * 
- * @since 2011-6-10
- * @author jokeway
- * @version $Id: HospitalDoctorLoginRepository.java 3663 2012-10-31 08:51:06Z wilson $
- */
+ 
 @Component
 public class HospitalDoctorLoginRepository implements CustomUserLoginRepository {
 

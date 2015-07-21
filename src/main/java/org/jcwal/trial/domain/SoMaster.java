@@ -1,6 +1,4 @@
-/**
- * SoMaster.java 2011-5-31
- */
+ 
 package org.jcwal.trial.domain;
 
 import java.util.ArrayList;
@@ -23,13 +21,7 @@ import org.macula.base.data.hibernate.type.FieldOptionType;
 import org.macula.base.data.vo.FieldOption;
 import org.macula.core.domain.AbstractAuditable;
 
-/**
- * <p> <b>SoMaster</b> 是销售单主表. </p>
- * 
- * @since 2011-5-31
- * @author jokeway
- * @version $Id: SoMaster.java 2329 2011-11-02 09:58:27Z wilson $
- */
+ 
 @Entity
 @DynamicInsert
 @DynamicUpdate

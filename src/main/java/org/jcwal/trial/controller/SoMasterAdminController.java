@@ -1,6 +1,4 @@
-/**
- * SoMasterAdminController.java 2011-5-31
- */
+ 
 package org.jcwal.trial.controller;
 
 import java.util.ArrayList;
@@ -28,13 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
-/**
- * <p> <b>SoMasterAdminController</b> 是SoMaster管理. </p>
- * 
- * @since 2011-5-31
- * @author jokeway
- * @version $Id: SoMasterAdminController.java 3577 2012-09-12 01:18:50Z wzp $
- */
+ 
 @Controller
 public class SoMasterAdminController extends TrialAdminController {
 

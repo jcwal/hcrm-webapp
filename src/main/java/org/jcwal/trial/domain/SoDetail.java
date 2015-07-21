@@ -1,6 +1,4 @@
-/**
- * SoDetail.java 2011-5-31
- */
+ 
 package org.jcwal.trial.domain;
 
 import javax.persistence.Entity;
@@ -20,13 +18,7 @@ import org.macula.core.domain.AbstractAuditable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * <p> <b>SoDetail</b> 销售单明细. </p>
- * 
- * @since 2011-5-31
- * @author jokeway
- * @version $Id: SoDetail.java 3347 2012-07-11 06:06:12Z wzp $
- */
+ 
 @Entity
 @DynamicInsert
 @DynamicUpdate
