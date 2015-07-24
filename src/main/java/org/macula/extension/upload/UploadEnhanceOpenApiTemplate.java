@@ -28,17 +28,17 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class UploadEnchanceOpenApiTemplate extends OpenApiTemplate {
+public class UploadEnhanceOpenApiTemplate extends OpenApiTemplate {
 
-	public UploadEnchanceOpenApiTemplate() {
+	public UploadEnhanceOpenApiTemplate() {
 
 	}
 
-	public UploadEnchanceOpenApiTemplate(String endpoint, String appId, String appSecret) {
+	public UploadEnhanceOpenApiTemplate(String endpoint, String appId, String appSecret) {
 		this(endpoint, appId, appSecret, OpenApiHelper.FORMAT_JSON, OpenApiHelper.SIGN_METHOD_MD5, "zh_CN");
 	}
 
-	public UploadEnchanceOpenApiTemplate(String endpoint, String appId, String appSecret, String format,
+	public UploadEnhanceOpenApiTemplate(String endpoint, String appId, String appSecret, String format,
 			String signMethod, String locale) {
 		super(endpoint, appId, appSecret, format, signMethod, locale);
 	}

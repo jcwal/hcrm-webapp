@@ -7,7 +7,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.macula.extension.upload.UploadEnchanceOpenApiTemplate;
+import org.macula.extension.upload.UploadEnhanceOpenApiTemplate;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -16,7 +16,7 @@ public class UploadFileTest extends TestCase {
 	@Test
 	public void testUpload() {
 
-		UploadEnchanceOpenApiTemplate template = new UploadEnchanceOpenApiTemplate();
+		UploadEnhanceOpenApiTemplate template = new UploadEnhanceOpenApiTemplate();
 
 		template.setAppId("app-id");
 		template.setAppSecret("app-secret");
