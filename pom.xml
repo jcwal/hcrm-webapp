@@ -11,8 +11,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdkLevel>1.6</jdkLevel>
 		<jvmargs>-XX:MaxPermSize=384m -Xms512m -Xmx1024m</jvmargs>
-		<macula.version>2.1.4.RELEASE</macula.version>
-		<macula.plugins.version>2.1.4.RELEASE</macula.plugins.version>
+		<macula.version>2.1.5.RELEASE</macula.version>
+		<macula.plugins.version>2.1.5.RELEASE</macula.plugins.version>
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<flying-saucer.version>9.0.6</flying-saucer.version>
 	</properties>
@@ -85,6 +85,17 @@
 			<groupId>org.macula.plugins</groupId>
 			<artifactId>macula-plugins-monitor</artifactId>
 			<version>${macula.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.macula.plugins</groupId>
+			<artifactId>macula-plugins-esb</artifactId>
+			<version>${macula.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- liquibase -->
 		<dependency>
