@@ -105,7 +105,7 @@ public class UploadEnhanceOpenApiTemplate extends OpenApiTemplate {
 			// POST BODY(Parameter)
 			MultiValueMap<String, Object> realPostBody = new LinkedMultiValueMap<String, Object>();
 			for (Map.Entry<String, List<String>> entry : parameterPostBody.entrySet()) {
-				realPostBody.add(entry.getKey(), entry.getValue());
+				realPostBody.add(entry.getKey(), entry.getValue().get(0));
 			}
 
 			for (Map.Entry<String, File> entry : files.entrySet()) {
