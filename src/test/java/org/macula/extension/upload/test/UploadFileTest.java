@@ -2,16 +2,13 @@ package org.macula.extension.upload.test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
 
 import org.apache.commons.collections.MapUtils;
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.macula.core.utils.DateFormatUtils;
 import org.macula.extension.upload.UploadEnhanceOpenApiTemplate;
 import org.macula.plugins.esb.openapi.vo.ExecuteResponse;
 
