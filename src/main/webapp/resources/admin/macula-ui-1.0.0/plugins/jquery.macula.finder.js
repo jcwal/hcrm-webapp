@@ -315,6 +315,7 @@
 					e.preventDefault();
 					ajaxOptions.form = Parts['search'];
 					ajaxOptions.currentPage = 1;
+					ajaxOptions.excel = false;
 					Parts['search'].trigger(Constants.data_send_event);
 				}
 			});
@@ -323,6 +324,7 @@
 				e.preventDefault();
 				ajaxOptions.form = Parts['search'];
 				ajaxOptions.currentPage = 1;
+				ajaxOptions.excel = false;
 				Parts['search'].trigger(Constants.data_send_event);
 				return false;
 			});
@@ -348,6 +350,7 @@
 									Parts['filter'] = $('#finder-filter-' + code);
 									ajaxOptions.form = Parts.filter;
 									ajaxOptions.currentPage = 1;
+									ajaxOptions.excel = false;
 									Parts['filter-action'].trigger(Constants.data_send_event);
 									$(this).blur();
 									return false;
@@ -355,6 +358,14 @@
 								if (query) {
 									$rside.find('#filter-submit-' + code).trigger('click');
 								}
+								$rside.find('#filter-excel-' + code).unbind('click').bind('click', function(e) {
+									Parts['filter'] = $('#finder-filter-' + code);
+									ajaxOptions.form = Parts.filter;
+									ajaxOptions.excel = true;
+									Parts['filter-action'].trigger(Constants.data_send_event);
+									$(this).blur();
+									return false;
+								});
 							},
 							onShow : function() {
 								Parts['search'].parent().hideme();
@@ -448,6 +459,14 @@
 				validator = ajaxOptions.form.validate({
 					focusInvalid : false,
 					submitHandler : function(form) {
+						if(ajaxOptions.excel) {
+							var tmpAction = ajaxOptions.form.attr('action');
+							var targetAction = getAbsoluteUrl(relativePath + ajaxOptions.form.attr('action') + "/" + ajaxOptions.tab +"/excel", Parts['list'].getContextPath());
+							ajaxOptions.form.attr('action', targetAction);
+							$(form)[0].submit();
+							ajaxOptions.form.attr('action', tmpAction);
+							return;
+						}
 						$(form).ajaxSubmit({
 							url : getAbsoluteUrl(relativePath + ajaxOptions.form.attr('action') + "/" + ajaxOptions.tab, Parts['list'].getContextPath()),
 							dataType : 'json',
