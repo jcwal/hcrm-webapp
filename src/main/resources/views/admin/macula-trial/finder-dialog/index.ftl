@@ -9,7 +9,7 @@
 		<div id="finder-dialog-content">
 			<button id="edit-action-${code}" type="button" class="btn btn-has-icon" 
 					data-bind="finder2dialog: content, finder: 'DOCTOR_SCHEMA', mapping:{'myid':'ID','mynickname':'NICKNAME'},
-					staticParams:{'myId':8}"
+					staticParams:{'mynickname':'罗'}"
 	  				href="javascript:void(0);" target="dialog::{title: '选择医生', width:'920',height:'350'}"
 	  			>
 	  			<span><span><i class="btn-icon"><@macula.themeImage src="bundle/btn_edit.gif"/></i>选择医生</span></span>
